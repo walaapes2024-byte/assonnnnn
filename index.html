@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عيد ميلادك أسية 🌙✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ألوان مستوحاة بالكامل من ستايل الصورة 53023.jpg */
+  :root{
+    --bg-dark: #120c1f;       /* الأسود الأرجواني الداكن للخلفية */
+    --purple-deep: #1e122b;   /* الأرجواني الغامق */
+    --kuromi-pink: #f1a7c4;   /* الوردي الساحر المميز */
+    --kuromi-accent: #b07bb0; /* الأرجواني المتوسط */
+    --cream-light: #fbebf2;   /* الأبيض الوردي الناعم للنصوص */
+    --neon-glow: #e06096;     /* توهج نيون وردي */
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    color:var(--cream-light);
+    font-family:'Tajawal', sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+    position: relative;
+    background-color: var(--bg-dark);
+  }
+
+  /* طبقة الخلفية مع تغبيش بنسبة 20% (4px) وثبات كامل لجمالية الصورة */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('bg.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(4px); /* التغبيش المطلوب 20% لتظهر معالم الصورة */
+    transform: scale(1.02); 
+    pointer-events: none;
+  }
+
+  /* ============ الدخولية الفخمة والعجيبة (MAGIC PORTAL) ============ */
+  #intro-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background: radial-gradient(circle, var(--purple-deep) 20%, var(--bg-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1.2s cubic-bezier(0.77, 0, 0.175, 1), visibility 1.2s;
+  }
+  body.intro-active{
+    overflow:hidden;
+    height:100vh;
+  }
+
+  /* البوابة الدائرية الساحرة */
+  .portal-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .portal-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px dashed var(--kuromi-pink);
+    box-shadow: 0 0 25px var(--neon-glow), inset 0 0 25px var(--neon-glow);
+    animation: rotatePortal 12s linear infinite;
+  }
+
+  .portal-glow {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(241,167,196,0.2) 0%, transparent 70%);
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes rotatePortal {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(0.9); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  /* زر القلب الفخم المستوحى من الصورة */
+  #open-btn{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #2d163a 0%, #12051a 100%);
+    box-shadow: 0 0 20px rgba(241, 167, 196, 0.4), inset 0 0 10px rgba(241, 167, 196, 0.2);
+    cursor: pointer;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  #open-btn::after{
+    content: '🖤'; /* قلب أسود فخم متناسق مع ستايل كورومي */
+    font-size: 32px;
+    filter: drop-shadow(0 0 8px var(--neon-glow));
+    animation: heartBeat 1.5s infinite;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  #open-btn:hover {
+    transform: scale(1.1);
+  }
+
+  #intro-caption{
+    margin-top: 35px;
+    color: var(--kuromi-pink);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(224, 96, 150, 0.6);
+    text-align: center;
+    animation: textPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes textPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  /* تأثير الاختفاء الخرافي عند الفتح */
+  #intro-overlay.opening {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  
+  #intro-overlay.opening .portal-ring {
+    transform: scale(5);
+    opacity: 0;
+    transition: transform 1.2s ease-out, opacity 1s ease-out;
+  }
+  /* ============ نهاية الدخولية ============ */
+
+  /* تساقط القلوب والجماجم بلون وردي نيون */
+  #sky{
+    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+  }
+  .floatie{
+    position:absolute;
+    bottom:-10%;
+    opacity:0;
+    animation:rise linear infinite;
+    filter:drop-shadow(0 0 8px var(--neon-glow));
+  }
+  @keyframes rise{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:0.85; }
+    90%{ opacity:0.6; }
+    100%{ transform:translateY(-110vh) translateX(var(--drift,20px)) rotate(360deg); opacity:0; }
+  }
+
+  section{
+    position:relative;
+    z-index:1;
+    padding:90px 24px;
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  h1,h2,h3{
+    font-family:'Lalezar', 'Tajawal', sans-serif;
+    margin:0;
+  }
+
+  /* HERO SECTION */
+  #hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+  }
+  .eyebrow{
+    letter-spacing:2px;
+    color:var(--kuromi-pink);
+    font-size:14px;
+    text-transform:uppercase;
+    text-shadow: 0 0 8px rgba(241,167,196,0.4);
+  }
+  #hero h1{
+    font-size:clamp(40px, 9vw, 75px);
+    color:var(--cream-light);
+    text-shadow:0 0 25px rgba(224,96,150,0.5);
+    line-height:1.2;
+  }
+  #hero h1 span{ color:var(--kuromi-pink); text-shadow: 0 0 15px var(--neon-glow); }
+  #hero p.sub{
+    font-size:18px;
+    color:var(--kuromi-accent);
+    max-width:480px;
+    line-height:1.9;
+  }
+
+  /* العداد بتصميم وردي فخم */
+  #countdown{
+    display:flex;
+    gap:16px;
+    margin-top:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .unit{
+    background:rgba(30, 18, 43, 0.6);
+    border:1px solid rgba(241, 167, 196, 0.3);
+    box-shadow: 0 0 15px rgba(224, 96, 150, 0.1);
+    border-radius:16px;
+    padding:16px 18px;
+    min-width:78px;
+    backdrop-filter:blur(8px);
+  }
+  .unit .num{
+    font-family:'Lalezar', sans-serif;
+    font-size:34px;
+    color:var(--kuromi-pink);
+    display:block;
+    text-shadow: 0 0 10px rgba(241,167,196,0.5);
+  }
+  .unit .label{
+    font-size:12px;
+    color:var(--cream-light);
+    opacity:.8;
+  }
+
+  .scroll-hint{
+    margin-top:40px;
+    font-size:13px;
+    color:var(--kuromi-pink);
+    opacity:.7;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+  }
+
+  /* خط التقسيم الفخم */
+  .divider{
+    width:80px; height:2px;
+    background:linear-gradient(90deg, transparent, var(--kuromi-pink), transparent);
+    margin:0 auto 28px;
+    box-shadow: 0 0 8px var(--neon-glow);
+  }
+
+  /* TIMELINE / STORY */
+  #story h2{
+    font-size:38px;
+    color:var(--kuromi-pink);
+    text-shadow: 0 0 15px rgba(241,167,196,0.3);
+    margin-bottom:8px;
+  }
+  #story > p.intro{
+    color:var(--kuromi-accent);
+    margin-bottom:50px;
+    font-size:15px;
+  }
+
+  .timeline{
+    position:relative;
+    margin-top:40px;
+    padding-right:30px;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    right:9px; top:6px; bottom:6px;
+    width:2px;
+    background:linear-gradient(180deg, var(--kuromi-pink), var(--purple-deep), transparent);
+  }
+  .tl-item{
+    position:relative;
+    text-align:right;
+    margin-bottom:48px;
+    padding-right:30px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .tl-item.visible{ opacity:1; transform:translateY(0); }
+  .tl-item::before{
+    content:'';
+    position:absolute;
+    right:0px; top:4px;
+    width:20px; height:20px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--kuromi-pink), var(--purple-deep));
+    box-shadow:0 0 12px var(--neon-glow);
+  }
+  .tl-date{
+    color:var(--kuromi-pink);
+    font-size:13px;
+    margin-bottom:6px;
+    display:block;
+  }
+  .tl-title{
+    font-family:'Lalezar', sans-serif;
+    font-size:24px;
+    color:var(--cream-light);
+    margin-bottom:6px;
+  }
+  .tl-text{
+    color:var(--kuromi-accent);
+    font-size:15px;
+    line-height:1.9;
+  }
+
+  /* LETTER (الرسالة الفخمة المظلمة) */
+  #letter{
+    background:rgba(18, 12, 31, 0.75);
+    border:1px solid rgba(241, 167, 196, 0.2);
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    border-radius:24px;
+    padding:50px 36px;
+    backdrop-filter:blur(6px);
+  }
+  #letter h2{
+    color:var(--kuromi-pink);
+    text-shadow: 0 0 15px var(--neon-glow);
+    font-size:34px;
+    margin-bottom:24px;
+  }
+  #letter p{
+    font-size:17px;
+    line-height:2.1;
+    color:var(--cream-light);
+    text-align:right;
+    margin:0 0 18px;
+  }
+  #letter .signature{
+    margin-top:30px;
+    font-family:'Lalezar', sans-serif;
+    font-size:22px;
+    color:var(--kuromi-pink);
+    text-shadow: 0 0 8px rgba(241,167,196,0.4);
+  }
+
+  /* MUSIC PLAYER */
+  #music{
+    padding-bottom:60px;
+  }
+  #music h2{
+    color:var(--kuromi-pink);
+    font-size:30px;
+    margin-bottom:18px;
+  }
+  .player{
+    background:linear-gradient(135deg, rgba(30,18,43,0.7), rgba(18,12,31,0.7));
+    border:1px solid rgba(241, 167, 196, 0.25);
+    box-shadow: 0 0 20px rgba(224,96,150,0.15);
+    border-radius:20px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+  }
+  .disc{
+    width:90px; height:90px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, var(--kuromi-pink), var(--purple-deep) 70%);
+    border:3px solid var(--kuromi-pink);
+    box-shadow: 0 0 15px var(--neon-glow);
+    animation:spin 6s linear infinite;
+    animation-play-state:paused;
+    position:relative;
+  }
+  .disc::after{
+    content:'';
+    position:absolute; inset:38%;
+    background:var(--bg-dark);
+    border-radius:50%;
+  }
+  .disc.playing{ animation-play-state:running; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  audio{
+    width:100%;
+    max-width:380px;
+    accent-color:var(--kuromi-pink);
+  }
+  .music-caption{
+    font-size:13px;
+    color:var(--kuromi-accent);
+  }
+
+  footer{
+    text-align:center;
+    padding:30px;
+    color:var(--kuromi-pink);
+    opacity:.4;
+    font-size:13px;
+  }
+
+  @media (max-width:480px){
+    section{ padding:70px 18px; }
+    .timeline{ padding-right:18px; }
+    .tl-item{ padding-right:18px; }
+  }
+</style>
+</head>
+<body class="intro-active">
+
+<!-- ============ واجهة الدخولية العجيبة والفخمة الجديدة ============ -->
+<div id="intro-overlay">
+  <div class="portal-wrapper">
+    <div class="portal-ring"></div>
+    <div class="portal-glow"></div>
+    <button id="open-btn" aria-label="افتحي المفاجأة"></button>
+  </div>
+  <div id="intro-caption">انقري على بوابة الحب لتبدأ المفاجأة الفخمة الك 🖤🔮</div>
+</div>
+<!-- ============ نهاية الدخولية ============ -->
+
+<div id="sky"></div>
+
+<section id="hero">
+  <div class="eyebrow">18 مارس 2026 — البداية</div>
+  <h1> كلعام وانتِ بألف خير حبيبتي <br><span> سوسة </span><br>أحلى وأقرب لقلبي 💗</h1>
+  <p class="sub">من ديالى الى الجزائر، المسافة بعيدة بس قلبي دائماً يمج. هذا الموقع الصغير هديتي لعيد ميلادك.</p>
+
+  <div id="countdown"></div>
+  <div class="scroll-hint">↓ انزلي لأسفل ↓</div>
+</section>
+
+<section id="story">
+  <div class="divider"></div>
+  <h2>قصتنا</h2>
+  <p class="intro">كل تاريخ هنا محفور بقلبي دائماً</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-date">18 مارس 2026</span>
+      <div class="tl-title">أول تعارف</div>
+      <p class="tl-text">تعارفنا بمجرد الصدفة بقروب على انستغرام... ما كنت أتخيل إن رسالة بسيطة بتغيّر حياتي كلها.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">3 أبريل 2026</span>
+      <div class="tl-title">ارتبطنا</div>
+      <p class="tl-text">بعد أسابيع قليلة من الحديث، صار قلبي مرتاح إنك أنتِ الشخص الصحيح. قلتها وما ندمت يوم.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">اليوم</span>
+      <div class="tl-title">عيد ميلادك</div>
+      <p class="tl-text">رغم المسافة بين العراق والجزائر، حبي يوصلك بكل ثانية. عيد ميلاد سعيد يا حياتي 🌙</p>
+    </div>
+  </div>
+</section>
+
+<section id="letter">
+  <h2>تهنئتي الج</h2>
+  <p>سوسايتي الجميلة</p>
+  <p>
+    اليوم ليس مجرد تاريخ عادي في الرزنامة، بل هو اليوم الذي أشرقت فيه الدنيا بوجودج، التاريخ الذي غيّر مجرى حياتي بالكامل، اليوم الذي وُلدت فيه أجمل وأرق فتاة في هذا الكون. كل عام وانتِ بألف ألف خير، وكل عام وانتِ معي وبجانبي.
+اليوم تطفئين شمعتج الـ 15 لتفتحي ذراعيج لعمر الـ 16.. هذا العمر الجميل الذي يليق بنقائها، وبراءتج، وروحج الطاهرة. تكبرين عاماً وتكبر في قلبي محبتج أضعافاً، تصبحين أكثر جمالاً ونضجاً، وتظلين في عيني تلك الأميرة التي لا يشبهها أحد في هذا العالم.
+قبل أن تدخلي حياتي، لم أكن أعرف أن هناك شخصاً يمكنه أن يملك قلبي وفكري بهذه الطريقة. بوجودج، تلوّنت أيامي وصار لكل تفصيل صغير طعم آخر. ضحكتج هي ملجئي عندما أكون متعباً، والحديث معج هو الجزء الأفضل من يومي الذي أنتظره بفارغ الصبر. انتِ لستِ مجرد حبيبة، انتِ السند، والصديقة المقربة، الشخص الذي أرى معه مستقبلي خطوة بخطوة. أشكر الله في كل يوم، وفي كل صلاة، لأنه رزقني بقلب مثل قلبج، ولأنه جعل طريقي يتقاطع مع طريجج لنكتب معاً أجمل قصة حب.
+في هذا العام الجديد، أتمنى أن لا تفارق تلك الابتسامة الساحرة وجهج الحنون، وأن يملأ الله قلبج بالسعادة التي تمنحينها لي دائماً، وأن يحميج من أي حزن أو ضيق، فالحزن لا يليق بعينيج. أتمنى أن تحققي كل طموحاتج وأحلامج الكبيرة، وأن أكون دائماً بجانبج سنداً وأماناً، نكبر يداً بيد، نواجه كل شيء بقلب واحد وروحيّن لا تفترقان.
+أجدد لج وعدي في هذا اليوم بأن أبقى دائماً الصديق والحبيب الذي لا يتغير ولا يخذلج أبداً، سأحمي حبنا بكل ما أوتيت من قوة. انتِ لستِ فقط حبيبتي، انتِ العمر الحلو الذي أتمنى أن لا ينتهي أبداً، والنعمة العظيمة التي أفرش لها قلبي لتعيش فيه بأمان.
+كل عام وانتِ حبيبتي الغالية، شريكة حلمي ومستقبلي. أتمنى لج عمراً مديداً مليئاً بالصحة والراحة، وعقبال الـ 100 عام ونحن معاً، نطفئ الشموع سوياً ونحتفل بوجودنا في حياة بعضنا البعض.
+  </p>
+  <div class="signature">بحبك دايم، ومستحيل يوم أنسى تاريخك معي 💗</div>
+</section>
+
+<section id="music">
+  <h2>أغنيتنا</h2>
+  <div class="player">
+    <div class="disc" id="disc"></div>
+    <audio id="song" controls preload="none" loop>
+      <source src="song.mp3" type="audio/mpeg">
+      متصفحك ما يدعم تشغيل الصوت.
+    </audio>
+    <div class="music-caption">الاغنية الذي قلبي يحبها واهداها الج 💕🪽</div>
+  </div>
+</section>
+
+<footer>صُنع بكل حب لسوساية ولاء 💕🪽</footer>
+
+<script>
+  // ===== العداد الزمني =====
+  const birthday = new Date('2026-07-05T00:00:00');
+
+  function updateCountdown(){
+    const now = new Date();
+    const diff = birthday - now;
+    const wrap = document.getElementById('countdown');
+
+    if(diff <= 0){
+      wrap.innerHTML = `<div class="unit" style="min-width:260px;">
+        <span class="num">🎉</span>
+        <span class="label">عيد ميلاد سعيد يا حبيبة عمري!</span>
+      </div>`;
+      return;
+    }
+
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff/(1000*60*60))%24);
+    const m = Math.floor((diff/(1000*60))%60);
+    const s = Math.floor((diff/1000)%60);
+
+    wrap.innerHTML = `
+      <div class="unit"><span class="num">${d}</span><span class="label">يوم</span></div>
+      <div class="unit"><span class="num">${h}</span><span class="label">ساعة</span></div>
+      <div class="unit"><span class="num">${m}</span><span class="label">دقيقة</span></div>
+      <div class="unit"><span class="num">${s}</span><span class="label">ثانية</span></div>
+    `;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ===== تساقط الرموز والقلوب الفخمة الملونة =====
+  const sky = document.getElementById('sky');
+  const symbols = ['💕','🖤','🔮','✨','🎀'];
+  function spawnFloatie(){
+    const el = document.createElement('div');
+    el.className = 'floatie';
+    el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left = Math.random()*100 + '%';
+    el.style.fontSize = (14 + Math.random()*18) + 'px';
+    el.style.setProperty('--drift', (Math.random()*120 - 60) + 'px');
+    el.style.animationDuration = (8 + Math.random()*8) + 's';
+    sky.appendChild(el);
+    setTimeout(()=> el.remove(), 16000);
+  }
+  setInterval(spawnFloatie, 800);
+
+  // ===== ظهور التايم لاين عند النزول =====
+  const items = document.querySelectorAll('.tl-item');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, {threshold:0.3});
+  items.forEach(i=>obs.observe(i));
+
+  // ===== دوران الأسطوانة مع الموسيقى =====
+  const audio = document.getElementById('song');
+  const disc = document.getElementById('disc');
+  audio.addEventListener('play', ()=> disc.classList.add('playing'));
+  audio.addEventListener('pause', ()=> disc.classList.remove('playing'));
+  audio.addEventListener('ended', ()=> disc.classList.remove('playing'));
+
+  // ===== منطق تفعيل الدخولية العجيبة =====
+  const introOverlay = document.getElementById('intro-overlay');
+  const openBtn = document.getElementById('open-btn');
+
+  openBtn.addEventListener('click', () => {
+    introOverlay.classList.add('opening');
+    document.body.classList.remove('intro-active');
+
+    audio.play().catch(err => {
+      console.log("حماية المتصفح تمنع التشغيل التلقائي المباشر: ", err);
+    });
+  });
+
+  // تشغيل احتياطي عند أول ضغطة عشوائية في الموقع
+  document.addEventListener('click', () => {
+    if (audio.paused && !document.body.classList.contains('intro-active')) {
+      audio.play().catch(err => {});
+    }
+  });
+</script>
+
+</body>
+</html>
